@@ -26,7 +26,7 @@ services:
     mysql:
         image: 'mysql/mysql-server:8.0'
         ports:
-            - '${FORWARD_DB_PORT:-3306}:3306'
+            - '${FORWARD_DB_PORT:-3307}:3306'
         environment:
             MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
             MYSQL_ROOT_HOST: '%'
@@ -48,6 +48,13 @@ services:
                 - '-p${DB_PASSWORD}'
             retries: 3
             timeout: 5s
+    mailhog:
+        image: mailhog/mailhog
+        ports:
+            - "8025:8025"   # 웹 UI
+            - "1025:1025"   # SMTP 포트
+        networks:
+            - sail
 networks:
     sail:
         driver: bridge
