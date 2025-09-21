@@ -14,12 +14,12 @@ Route::controller(\App\Http\Controllers\Auth\RegisterController::class)
 Route::controller(\App\Http\Controllers\Auth\EmailVerificationController::class)->group(function () {
     Route::name('verification.')->prefix('/email')->group(function () {
         Route::middleware('auth')->group(function () {
-            Route::get('/verify', 'create')
+            Route::get('/verify', 'notice')
                 ->name('notice');
-            Route::get('/verify/{id}/{hash}', 'update')
-                ->name('verify')
-                ->middleware('signed');
-            Route::post('/verification-notification', 'store')
+            Route::get('/verify/{id}/{hash}', 'verify')
+                ->middleware('signed')
+                ->name('verify');
+            Route::post('/verification-notification', 'send')
                 ->name('send');
         });
     });
