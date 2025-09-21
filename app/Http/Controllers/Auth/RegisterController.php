@@ -17,18 +17,19 @@ class RegisterController extends Controller
     public function showRegistrationForm(){
         return view('auth.register');
     }
-    // 유효성 검사
+
+    // 회원가입 유효성 검사
     public function register(Request $request){
-        $validated = $request->validate([
+        $request->validate([
             'name' => 'required|max:16',
             'email' => 'required|email|unique:users|max:30',
             'password' => [Password::default()],
         ]);
 
         $user = User::create([
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'password' => Hash::make($validated['password']),
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
         ]);
 
         auth()->login($user);
