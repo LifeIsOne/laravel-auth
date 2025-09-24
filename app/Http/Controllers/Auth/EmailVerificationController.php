@@ -18,7 +18,7 @@ class EmailVerificationController extends Controller
 
     // 이메일 인증되지 않은 사용자
     public function notice(){
-        return view('auth.verify-mail');
+        return view('auth.verify-email');
     }
 
     // 이메일 재인증
