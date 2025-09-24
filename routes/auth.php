@@ -24,3 +24,20 @@ Route::controller(\App\Http\Controllers\Auth\EmailVerificationController::class)
         });
     });
 });
+
+// 로그인컨트롤러 라우트 그룹
+Route::controller(\App\Http\Controllers\Auth\LoginController::class)
+    ->group(function() {
+        // 로그인하지 않은 사용자만 접근 가능
+        Route::middleware('guest')->group(function () {
+            // 로그인 폼 뷰
+            Route::get('/login', 'showLoginForm')
+                ->name('login');
+            // 로그인 폼 제출
+            Route::post('/login', 'login');
+        });
+        // 로그아웃 처리 라우트
+        Route::post('/logout', 'logout')
+            ->name('logout')
+            ->middleware('auth');   // 로그인된 사용자만
+    });

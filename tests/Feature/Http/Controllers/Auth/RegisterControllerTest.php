@@ -20,11 +20,11 @@ class RegisterControllerTest extends TestCase
     }
 
     // 회원가입 테스트
-    public function testUserRegistration(){
+    public function testUserRegistration() {
         // 이메일 전송 X
         Event::fake();
 
-        $email = $this->faker->safeEmail;
+        $email = $this->faker->safeEmail();
         // 사용자 생성,  리다이렉트 검증
         $this->post(route('register'), [
             'name' => $this->faker->name(),

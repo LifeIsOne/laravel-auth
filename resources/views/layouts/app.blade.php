@@ -29,10 +29,10 @@
 {{--            <li><a href="{{ route('dashboard.blogs') }}">대시보드</a></li>--}}
 {{--            <li><a href="{{ route('blogs.index') }}">블로그</a></li>--}}
 {{--            <li>--}}
-{{--                <form action="{{ route('logout') }}" method="POST">--}}
-{{--                    @csrf--}}
-{{--                    <button type="submit">로그아웃</button>--}}
-{{--                </form>--}}
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit">로그아웃</button>
+                </form>
 {{--            </li>--}}
 {{--        @endguest--}}
 {{--    </ul>--}}

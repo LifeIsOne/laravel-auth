@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Password;
 
-class RegisterUserRequest extends FormRequest
+class LoginRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -15,10 +15,8 @@ class RegisterUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|max:16',
-            'email' => 'required|email|unique:users|max:30',
-            'password' => ['required', 'max:30', Password::defaults()],
+            'email' => 'required|email|exists:users|max:30',
+            'password' => ['required', 'max:30', Password::default()],
         ];
     }
-
 }
