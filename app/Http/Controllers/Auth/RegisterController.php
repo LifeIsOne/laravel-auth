@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\RegisterUserRequest;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -19,7 +20,7 @@ class RegisterController extends Controller
     }
 
     // 회원가입 유효성 검사
-    public function register(Request $request){
+    public function register(RegisterUserRequest $request){
         $request->validate([
             'name' => 'required|max:16',
             'email' => 'required|email|unique:users|max:30',
