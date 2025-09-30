@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Enums\Provider;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Providers\RouteServiceProvider;
@@ -10,7 +11,9 @@ class LoginController extends Controller
 {
     // 로그인 뷰 반환
     public function showLoginForm() {
-        return view('auth.login');
+        return view('auth.login',[
+            'providers' => Provider::cases(),
+        ]);
     }
 
     // 로그인 처리 메서드

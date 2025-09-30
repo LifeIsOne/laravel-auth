@@ -11,4 +11,6 @@
 
         <button type="submit">회원가입</button>
     </form>
+
+    @each('auth.social', $providers, 'provider')
 @endsection

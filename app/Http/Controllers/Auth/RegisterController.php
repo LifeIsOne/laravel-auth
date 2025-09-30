@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Enums\Provider;
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\RegisterUserRequest;
@@ -16,7 +17,9 @@ class RegisterController extends Controller
 {
     // 회원가입 뷰 반환
     public function showRegistrationForm(){
-        return view('auth.register');
+        return view('auth.register',[
+            'providers' => Provider::cases(),
+        ]);
     }
 
     // 회원가입 유효성 검사
